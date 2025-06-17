@@ -128,7 +128,7 @@ Reusable UI components ensure scalability, consistency, and ease of maintenance 
 ## ✅ Tasks & Progress Checklist
 
 ### 0. Project Initialization ✅
-- [x] GitHub Repo: [`airbnb-clone-project`](https://github.com/your-username/airbnb-clone-project)
+- [x] GitHub Repo: [`airbnb-clone-project`](https://github.com/essoubai322/airbnb-clone-project)
 - [x] Added initial `README.md` with project overview
 
 ### 1. UI/UX Design Planning ✅
@@ -150,7 +150,7 @@ Reusable UI components ensure scalability, consistency, and ease of maintenance 
 
 ## 📁 Repository
 
-> GitHub: [airbnb-clone-project](https://github.com/your-username/airbnb-clone-project)
+> GitHub: [airbnb-clone-project](https://github.com/essoubai322/airbnb-clone-project)
 
 ---
 
