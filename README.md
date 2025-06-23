@@ -26,14 +26,126 @@ By completing this project, you will:
 
 ---
 
-## 🛠️ Tech Stack
+## 🔧 Technology Stack
 
-- **Frontend**: HTML, CSS, JavaScript (React)
-- **Backend**: Node.js, Express (Optional)
-- **Database**: MongoDB or PostgreSQL (Optional)
-- **Version Control**: Git & GitHub
-- **Design Tools**: Figma
-- **Deployment**: Vercel, Netlify, or Render
+Here’s a breakdown of the tools and technologies used in this project and their purpose:
+
+| Technology     | Purpose                                                                 |
+|----------------|-------------------------------------------------------------------------|
+| **React**      | Frontend JavaScript library for building dynamic and reusable UI       |
+| **Node.js**    | Backend runtime for handling API logic and server-side operations       |
+| **Express.js** | Framework for Node.js to simplify RESTful API creation                  |
+| **MongoDB**    | NoSQL database for storing user, property, and booking data             |
+| **PostgreSQL** | (Optional) Relational DB alternative for structured data relationships |
+| **Git & GitHub** | Version control and project collaboration                             |
+| **Figma**      | UI/UX prototyping and mockup design                                     |
+| **Vercel/Netlify/Render** | Deployment platforms for hosting the frontend/backend       |
+
+---
+
+## 👥 Team Roles
+
+| Role                   | Responsibility                                                                 |
+|------------------------|--------------------------------------------------------------------------------|
+| **Project Manager**    | Coordinates the team, sets goals, manages deadlines                            |
+| **Frontend Developer** | Builds responsive and interactive UI with React                                |
+| **Backend Developer**  | Implements server-side logic, APIs, and connects to the database                |
+| **Database Administrator** | Designs schema, manages data consistency, handles queries and optimization |
+| **UI/UX Designer**     | Designs layout, ensures intuitive user journey, builds in Figma                 |
+| **QA Engineer**        | Tests the application for bugs, ensures feature reliability                     |
+| **DevOps Engineer**    | Manages deployment pipelines, handles CI/CD, monitors server performance        |
+| **Product Owner**      | Defines user stories and feature priorities based on business value             |
+| **Scrum Master**       | Facilitates Agile workflow, removes obstacles, supports the team                |
+
+---
+
+## 🗄️ Database Design
+
+Below are the core entities and fields of the AirBnB Clone:
+
+### 1. **Users**
+- `id`: unique identifier
+- `name`: full name
+- `email`: unique user email
+- `password`: hashed password
+- `role`: guest or host
+
+### 2. **Properties**
+- `id`: unique identifier
+- `title`: property name
+- `location`: address or coordinates
+- `price_per_night`: nightly rate
+- `host_id`: references a User
+
+### 3. **Bookings**
+- `id`: unique booking ID
+- `user_id`: references User who booked
+- `property_id`: references Property
+- `check_in`: date
+- `check_out`: date
+
+### 4. **Reviews**
+- `id`: unique identifier
+- `user_id`: reviewer
+- `property_id`: property reviewed
+- `rating`: score (1–5)
+- `comment`: text feedback
+
+### 5. **Payments**
+- `id`: payment transaction ID
+- `booking_id`: linked to Booking
+- `amount`: total charged
+- `status`: pending, success, failed
+
+**Relationships**
+- One user can have many properties (if host).
+- One user can make many bookings.
+- Each booking belongs to one property.
+- A property can have multiple reviews.
+
+---
+
+## 🧩 Feature Breakdown
+
+| Feature                  | Description                                                                 |
+|--------------------------|-----------------------------------------------------------------------------|
+| **User Authentication**  | Sign-up, login, and role-based access (host vs guest)                       |
+| **Property Management**  | Hosts can create, update, and delete listings                               |
+| **Search & Filters**     | Users can search properties by location, price, date, etc.                  |
+| **Booking System**       | Guests can book available properties with selected dates                    |
+| **Review System**        | Guests can leave feedback and rate their stays                              |
+| **Payment Integration**  | Secure payment flow with confirmation                                       |
+| **Responsive UI**        | Works seamlessly on all screen sizes                                        |
+| **Admin Dashboard**      | (Optional) Manage users, properties, and system status                       |
+
+---
+
+## 🔐 API Security
+
+To protect sensitive data and ensure safe operations, these security measures will be implemented:
+
+- **Authentication (JWT/OAuth2)**: To validate user identity before allowing access to protected routes.
+- **Authorization**: Role-based permissions to limit access to certain actions (e.g., only hosts can post listings).
+- **Input Validation & Sanitization**: Prevent SQL injection, XSS, and data corruption.
+- **Rate Limiting**: Prevent abuse of APIs (e.g., brute-force login attempts).
+- **HTTPS/SSL**: All communication will be encrypted for privacy and data integrity.
+
+> **Why this matters**: Protecting user credentials, payment info, and preventing unauthorized actions are crucial in any booking platform.
+
+---
+
+## 🚀 CI/CD Pipeline
+
+### What is CI/CD?
+CI/CD stands for **Continuous Integration** and **Continuous Deployment** — a development practice that automates testing, building, and deploying code.
+
+### Tools:
+- **GitHub Actions**: Automate testing, linting, and deployments
+- **Docker**: Containerize backend for consistent deployment
+- **Netlify/Vercel**: Auto-deploy frontend from GitHub branch
+- **Render/Heroku**: Deploy backend services with environment configs
+
+> CI/CD pipelines reduce human error, allow faster iterations, and keep the codebase stable and production-ready.
 
 ---
 
@@ -59,9 +171,6 @@ By completing this project, you will:
 | Listing Detailed View  | Full property details, amenities, gallery, and booking form  |
 | Simple Checkout View   | Streamlined checkout page with payment and confirmation      |
 
-### 💡 Importance of a User-Friendly Design
-A clean and intuitive design enhances the user's journey, improves trust and satisfaction, and boosts overall conversion rates. Accessibility, mobile adaptability, and ease of navigation are crucial pillars of this application.
-
 ---
 
 ## 🖌️ Figma Design Specifications
@@ -84,73 +193,25 @@ Mockup design specifications guide developers and designers toward consistency a
 
 ---
 
-## 👥 Project Roles and Responsibilities
+## 📁 Repository
 
-| Role              | Responsibilities |
-|-------------------|------------------|
-| **Project Manager** | Oversees deadlines, coordinates team, ensures deliverables |
-| **Frontend Developers** | Implement responsive UI components using React |
-| **Backend Developers** | Build RESTful APIs, manage databases, and implement server logic |
-| **Designers** | Create mockups, define design systems, ensure UX consistency |
-| **QA/Testers** | Write and execute test plans, identify bugs |
-| **DevOps Engineers** | Manage CI/CD pipelines, handle deployment and server infrastructure |
-| **Product Owner** | Define core features, prioritize backlog, represent user needs |
-| **Scrum Master** | Organize sprints, manage agile workflow, remove blockers |
-
----
-
-## 🧩 UI Component Patterns
-
-Reusable UI components ensure scalability, consistency, and ease of maintenance across the app.
-
-### 📌 Planned Components
-
-#### 🔝 Navbar
-- Logo
-- Search Bar
-- User Profile Menu
-- Mobile Menu Toggle
-
-#### 🏘️ Property Card
-- Property Image
-- Title, Price, Location
-- Rating and Favorite Button
-- Responsive Grid Layout
-
-#### 👣 Footer
-- Navigation Links
-- Company Info
-- Social Media Icons
-- Copyright
+> GitHub: [airbnb-clone-project](https://github.com/essoubai322/airbnb-clone-project)
 
 ---
 
 ## ✅ Tasks & Progress Checklist
 
-### 0. Project Initialization ✅
-- [x] GitHub Repo: [`airbnb-clone-project`](https://github.com/essoubai322/airbnb-clone-project)
-- [x] Added initial `README.md` with project overview
-
-### 1. UI/UX Design Planning ✅
-- [x] Defined design goals
-- [x] Listed key features
-- [x] Described primary views and layout
-
-### 2. Figma Design Specs ✅
-- [x] Included color and typography guidelines
-- [x] Explained importance of design properties
-
-### 3. Roles & Responsibilities ✅
-- [x] Outlined each team role and duties
-
-### 4. UI Component Patterns ✅
-- [x] Described core reusable components
-
----
-
-## 📁 Repository
-
-> GitHub: [airbnb-clone-project](https://github.com/essoubai322/airbnb-clone-project)
+| Task                             | Status  |
+|----------------------------------|---------|
+| GitHub Repository Initialization | ✅       |
+| UI/UX Design Planning            | ✅       |
+| Figma Design Specs               | ✅       |
+| Team Roles                       | ✅       |
+| Technology Stack Overview        | ✅       |
+| Database Design Overview         | ✅       |
+| Feature Breakdown                | ✅       |
+| API Security Overview            | ✅       |
+| CI/CD Pipeline Overview          | ✅       |
 
 ---
 
@@ -163,5 +224,3 @@ This project is for educational and learning purposes. Commercial use is not per
 ## 🙌 Acknowledgements
 
 Inspired by Airbnb's design and user experience. Built with passion by a collaborative development team.
-
----
